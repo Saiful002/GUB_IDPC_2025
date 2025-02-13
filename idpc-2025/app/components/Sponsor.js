@@ -1,10 +1,11 @@
-'use client'
+"use client";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
-
 const Sponsor = () => {
   const [index, setIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
   const sponsors = [
     "https://www.bssnews.net/assets/news_photos/2024/02/03/image-171581-1706971936.jpg",
     "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMvtLh5p1r2dc8_GI82Ytu9mRZj2IyM0X74fcSU96mjNp4_jk4CBd2DdzJigQnB8nYTOpyZleMRdYPdNhQdfyQAfuLO0ORr10m68w6y0GNd-FbP_5O76LLuE5kMWsJn-2wm9bo_lE94ZbG/s1600/bangla-vision.jpg",
@@ -13,14 +14,22 @@ const Sponsor = () => {
 
   const totalSlides = sponsors.length;
 
-  // Update the slide view to the current index
-  const updateSlider = () => {
-    const isMobile = window.innerWidth <= 768; // Mobile screen width breakpoint (you can adjust as needed)
-    return {
-      transform: `translateX(-${index * (isMobile ? 100 : 50)}%)`, // Use 100% on mobile, 50% on larger screens
-      transition: "transform 0.5s ease",
+  // Handle resizing and determine if screen is mobile
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth <= 768);
     };
 
+    checkScreenSize(); // Check on mount
+    window.addEventListener("resize", checkScreenSize);
+
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+
+  // Update the slider transform based on screen size
+  const sliderStyle = {
+    transform: `translateX(-${index * (isMobile ? 100 : 50)}%)`,
+    transition: "transform 0.5s ease",
   };
 
   // Handle the next slide
@@ -36,7 +45,7 @@ const Sponsor = () => {
   // Auto slide every 3 seconds
   useEffect(() => {
     const interval = setInterval(nextSlide, 3000);
-    return () => clearInterval(interval); // Cleanup interval on unmount
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -49,11 +58,7 @@ const Sponsor = () => {
 
         {/* Image Slider Container */}
         <div className="relative mx-auto mt-10 overflow-hidden">
-          <div
-            id="sliderWrapper"
-            className="flex"
-            style={updateSlider()}
-          >
+          <div id="sliderWrapper" className="flex" style={sliderStyle}>
             {sponsors.map((image, idx) => (
               <div
                 key={idx}
