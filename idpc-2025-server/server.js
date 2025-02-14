@@ -64,29 +64,22 @@ app.post("/register", (req, res) => {
 
 // Send Confirmation Email
 const mailOptions = {
-  from: process.env.EMAIL_USER,
+  from: `"GUB IDPC 2025" <${process.env.EMAIL_USER}>`,
   to: email,
   subject: "🎉 Registration Successful - GUB IDPC 2025",
   html: `
     <div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;">
       <div style="max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-        <h2 style="color: #2c3e50; text-align: center;">🎉 Welcome to GUB IDPC 2025 - Registration Confirmed! </h2>
+        <h2 style="color: #2c3e50; text-align: center;">🎉 Welcome to GUB IDPC 2025 - Registration Confirmed!</h2>
         <p style="font-size: 16px; color: #555;">Dear <strong>${name}</strong>,</p>
-        <p style="font-size: 16px; color: #555;">We are thrilled to welcome you to <strong>GUB IDPC 2025!</strong> 🚀 Your registration has been successfully completed, and we truly appreciate your enthusiasm for being part of this incredible event.</p>
-        
+        <p style="font-size: 16px; color: #555;">We are thrilled to welcome you to <strong>GUB IDPC 2025!</strong> 🚀 Your registration has been successfully completed.</p>
+
         <div style="background: #f9f9f9; padding: 15px; border-radius: 5px; margin: 15px 0;">
           <p style="margin: 5px 0;"><strong>📌 University ID:</strong> ${id}</p>
           <p style="margin: 5px 0;"><strong>📌 Transaction ID:</strong> ${transactionId}</p>
         </div>
 
-        <p style="font-size: 16px; color: #555;">Your participation means a lot to us, and we can’t wait to see you in action. Get ready for an exciting experience filled with learning, innovation, and networking with like-minded individuals! </p>
-
-        <p style="font-size: 16px; color: #555;">If you have any questions or need further assistance, feel free to reach out. Stay tuned for more updates as we get closer to the event.</p>
-
-        <p style="font-size: 16px; text-align: center; font-weight: bold;">✨ Thank you for being a part of this journey! See you at GUB IDPC 2025! ✨</p>
-
-        <p style="text-align: center; font-size: 14px; color: #888;">Best Regards,</p>
-        <p style="text-align: center; font-size: 14px; font-weight: bold;">GUB IDPC 2025 Team</p>
+        <p style="font-size: 16px; color: #555;">If you have any questions, feel free to reach out.</p>
         <p style="text-align: center; font-size: 14px; color: #888;">📩 beginnercpgub@gmail.com | 📞 018*******</p>
       </div>
     </div>
