@@ -136,7 +136,7 @@ const Navbar = () => {
 
         {/* Mobile Event Dropdown */}
         <div className="relative">
-          <button className="flex items-center text-white hover:text-[#cd1a69] font-bold" onClick={() => setActiveDropdown(activeDropdown === 'event' ? null : 'event')}>
+          <button className="flex items-center text-gray-800 hover:text-[#cd1a69] font-bold" onClick={() => setActiveDropdown(activeDropdown === 'event' ? null : 'event')}>
             Event <FaChevronDown className="w-4 h-4 ml-1" />
           </button>
           {activeDropdown === 'event' && (
@@ -147,8 +147,8 @@ const Navbar = () => {
           )}
         </div>
 
-        <Link href="/EventSchedule" className="text-white hover:text-[#cd1a69] font-bold" onClick={() => setIsOpen(false)}>Schedule</Link>
-        <Link href="/Registration" className="text-white hover:text-[#cd1a69] font-bold" onClick={() => setIsOpen(false)}>Registration</Link>
+        <Link href="/EventSchedule" className="text-gray-800 hover:text-[#cd1a69] font-bold" onClick={() => setIsOpen(false)}>Schedule</Link>
+        <Link href="/Registration" className="text-gray-800 hover:text-[#cd1a69] font-bold" onClick={() => setIsOpen(false)}>Registration</Link>
       </nav>
     </header>
   );

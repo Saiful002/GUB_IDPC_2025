@@ -6,7 +6,7 @@ import reveal from '@/public/Images/LOGO REVEAL_.png'
 
 const Countdown = () => {
   const calculateTimeLeft = () => {
-    const eventDate = new Date('2025-02-15T00:00:00').getTime();
+    const eventDate = new Date('2025-02-28T00:00:00').getTime();
     const now = new Date().getTime();
     const diff = eventDate - now;
 
